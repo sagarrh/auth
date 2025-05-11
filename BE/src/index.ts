@@ -1,0 +1,38 @@
+import "dotenv/config";
+import cors from "cors";
+import express, { NextFunction, Request, Response } from "express";
+import cookieParser from "cookie-parser";
+import { appconfig } from "./config/app.config";
+import { HTTPSTATUS } from "./config/http.config";
+import { asyncHandler } from "./middleware/asyncHandlerr";
+
+
+const app = express();
+const BASE_PATH = appconfig.BASE_PATH;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: appconfig.APP_ORIGIN,
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+
+
+app.get(
+  "/",
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    res.status(HTTPSTATUS.OK).json({
+      message: "Hello Subscribers!!!",
+    });
+  })
+);
+
+
+
+app.listen(appconfig.APP_PORT, async () => {
+  console.log(`Server listening on port ${appconfig.APP_PORT} in ${appconfig.NODE_ENV}`);
+});

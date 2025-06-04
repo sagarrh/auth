@@ -1,7 +1,7 @@
 import { getEnv } from "../common/utils/getenv";
 
 export const appconfig = {
-    APP_NAME: getEnv("APP_NAME", "MyApp"),
+    // APP_NAME: getEnv("APP_NAME", "MyApp"),
     NODE_ENV : getEnv("NODE_ENV", "development"),
     APP_ORIGIN :getEnv("APP_ORIGIN", "http://localhost:3000"),
     APP_PORT : getEnv("PORT", "8080"),

@@ -23,10 +23,10 @@ app.use(cookieParser());
 
 
 app.get(
-  "/",
+  "/okay",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     res.status(HTTPSTATUS.OK).json({
-      message: "Hello Subscribers!!!",
+      message: "is it working?? hmmm ok..",
     });
   })
 );

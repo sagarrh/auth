@@ -11,7 +11,7 @@ export const asyncHandler =
   async (req, res, next) => {
     try {
       await controller(req, res, next);
-    } catch (error) {
+    } catch (error) {   
       next(error);
     }
   };

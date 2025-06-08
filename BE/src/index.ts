@@ -5,6 +5,10 @@ import cookieParser from "cookie-parser";
 import { appconfig } from "./config/app.config";
 import { HTTPSTATUS } from "./config/http.config";
 import { asyncHandler } from "./middleware/asyncHandlerr";
+import main from "./database/database";
+import { errorHandler } from "./middleware/errorhandler";
+import { BadRequest } from "./common/utils/catch-errors";
+
 
 
 const app = express();
@@ -23,8 +27,9 @@ app.use(cookieParser());
 
 
 app.get(
-  "/okay",
+  "/",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    throw new BadRequest("bad request");
     res.status(HTTPSTATUS.OK).json({
       message: "is it working?? hmmm ok..",
     });
@@ -32,7 +37,8 @@ app.get(
 );
 
 
-
+app.use(errorHandler);
 app.listen(appconfig.APP_PORT, async () => {
   console.log(`Server listening on port ${appconfig.APP_PORT} in ${appconfig.NODE_ENV}`);
+  await main();
 });

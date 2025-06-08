@@ -1,11 +1,13 @@
 import { getEnv } from "../common/utils/getenv";
-
+// const export BASEPATH= "/something";
 export const appconfig = {
     // APP_NAME: getEnv("APP_NAME", "MyApp"),
     NODE_ENV : getEnv("NODE_ENV", "development"),
     APP_ORIGIN :getEnv("APP_ORIGIN", "http://localhost:3000"),
     APP_PORT : getEnv("PORT", "8080"),
-    BASE_PATH: process.env.BASE_PATH || '/api',
+    MONGO_URI : getEnv("MONGO_URI"),
+    BASE_PATH: getEnv("BASE_PATH", "/api/v1"),
+    // BASE_PATH: process.env.BASE_PATH || '/api',
     // APP_ORIGIN: process.env.APP_ORIGIN || 'http://localhost:3000'
     JWT:{
         SECRET: getEnv("JWT_SECRET"),

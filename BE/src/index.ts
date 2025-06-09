@@ -8,6 +8,8 @@ import { asyncHandler } from "./middleware/asyncHandlerr";
 import main from "./database/database";
 import { errorHandler } from "./middleware/errorhandler";
 import { BadRequest } from "./common/utils/catch-errors";
+import { authcontroller } from "./modules/auth/auth.module";
+import authroute from "./modules/auth/auth.routes";
 
 
 
@@ -36,7 +38,7 @@ app.get(
   })
 );
 
-
+app.use(`${BASE_PATH}/auth`,authroute)
 app.use(errorHandler);
 app.listen(appconfig.APP_PORT, async () => {
   console.log(`Server listening on port ${appconfig.APP_PORT} in ${appconfig.NODE_ENV}`);

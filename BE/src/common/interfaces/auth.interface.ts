@@ -10,3 +10,8 @@ export interface loginDTO{
     password: string;
     userAgent?: string;
 }
+
+export interface resetPasswordDto {
+  password: string;
+  verificationCode: string;
+}

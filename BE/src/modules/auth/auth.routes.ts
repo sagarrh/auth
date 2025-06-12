@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { authcontroller } from "./auth.module";
+import { AuthController } from "./auth.controller";
+import { authenticateJWT } from "../../common/strategy/jwtstrat";
 
 const authroute = Router()
 authroute.post("/register",authcontroller.register);

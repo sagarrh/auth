@@ -56,6 +56,10 @@ export class AuthService{
         }
 
     }
+    // public async login1(loginData: loginDTO) {
+    //     const { email, password, userAgent } = loginData;
+    // }
+    
 
     public async login(loginData: loginDTO){
         const { email, password, userAgent } = loginData;
@@ -90,31 +94,31 @@ export class AuthService{
             };
             }
 
-    logger.info(`Creating session for user ID: ${user._id}`);
-    const session = await SessionModel.create({
-      userId: user._id,
-      userAgent,
-    });
+        logger.info(`Creating session for user ID: ${user._id}`);
+        const session = await SessionModel.create({
+          userId: user._id,
+          userAgent,
+        });
 
-    logger.info(`Signing tokens for user ID: ${user._id}`);
-    const accessToken = signJwtToken({
-      userId: user._id,
-      sessionId: session._id,
-    });
+        logger.info(`Signing tokens for user ID: ${user._id}`);
+        const accessToken = signJwtToken({
+          userId: user._id,
+          sessionId: session._id,
+        });
 
-    const refreshToken = signJwtToken(
-      {
-        sessionId: session._id,
-      },
-      refreshTokenSignOptions
-    );
+        const refreshToken = signJwtToken(
+          {
+            sessionId: session._id,
+          },
+          refreshTokenSignOptions
+        );
 
-    logger.info(`Login successful for user ID: ${user._id}`);
-    return {
-      user,
-      accessToken,
-      refreshToken,
-      mfaRequired: false,
+        logger.info(`Login successful for user ID: ${user._id}`);
+        return {
+          user,
+          accessToken,
+          refreshToken,
+          mfaRequired: false,
     };
 
     }

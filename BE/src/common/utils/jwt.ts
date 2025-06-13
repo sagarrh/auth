@@ -21,12 +21,12 @@ const defaults: SignOptions = {
 };
 
 export const accessTokenSignOptions: SignOptsAndSecret = {
-  expiresIn: appconfig.JWT.EXPIRES_IN,
+  // expiresIn: appconfig.JWT.EXPIRES_IN,
   secret: appconfig.JWT.SECRET,
 };
 
 export const refreshTokenSignOptions: SignOptsAndSecret = {
-  expiresIn: appconfig.JWT.REFRESH_EXPIRES_IN,
+  // expiresIn: appconfig.JWT.REFRESH_EXPIRES_IN,
   secret: appconfig.JWT.REFRESH_SECRET,
 };
 

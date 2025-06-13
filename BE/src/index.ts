@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.get(
   "/",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-    throw new BadRequest("bad request");
+    // throw new BadRequest("bad request");;
     res.status(HTTPSTATUS.OK).json({
       message: "is it working?? hmmm ok..",
     });

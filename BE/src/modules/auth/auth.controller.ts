@@ -18,7 +18,7 @@ export class AuthController{
 
     }
     public register = asyncHandler(async (req:Request, res:Response):Promise<any>=> {
-        const userAgent = req.headers["user-agent"];
+        const userAgent = req.headers["User-Agent"];
         const body = registerSchema.parse({
             ...req.body,
             userAgent,
